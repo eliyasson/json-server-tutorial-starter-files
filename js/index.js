@@ -7,19 +7,19 @@ const renderPosts = async () =>{
     const res = await fetch(uri);
     const posts = await res.json();
     
-    let templete = '';
+    let template = '';
     posts.forEach(post => {
-        templete += `
+        template += `
             <div class="post">
                 <h2>${post.title}</h2>
                 <p><small>${post.likes} likes</small></p>
                 <p>${post.body.slice(0, 200)}</p>
-                <a href="/details.html">read more...</a>
+                <a href="/details.html?id=${post.id}">read more...</a>
             </div>
         `
     })
 
-    container.innerHTML = templete;
+    container.innerHTML = template;
 
 }
 window.addEventListener('DOMContentLoaded', () => renderPosts());
